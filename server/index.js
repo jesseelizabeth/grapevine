@@ -21,7 +21,7 @@ const createApp = () => {
   app.use(express.static(path.join(__dirname, '..', 'public')));
 
   // sends index.html
-  app.get('*', (req, res) => {
+  app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public/index.html'));
   });
 
@@ -48,8 +48,4 @@ async function bootApp() {
   await startListening();
 }
 
-if (require.main === module) {
-  bootApp();
-} else {
-  createApp();
-}
+bootApp();
