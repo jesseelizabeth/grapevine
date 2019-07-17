@@ -11,5 +11,6 @@ Contact.belongsToMany(Contact, {
   through: 'relationship',
 });
 Contact.hasMany(Relationship);
+Relationship.belongsTo(Contact);
 
 module.exports = { Contact, Pet, Relationship };

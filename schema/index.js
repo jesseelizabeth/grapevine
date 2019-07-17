@@ -24,9 +24,12 @@ const ContactType = new GraphQLObjectType({
       },
     },
     relationships: {
-      type: new GraphQLList(ContactType),
+      type: new GraphQLList(RelationshipType),
       resolve(parent) {
-        return Relationship.findAll({ where: { contactId: parent.id } });
+        return Relationship.findAll({
+          where: { contactId: parent.id },
+          include: { model: Contact },
+        });
       },
     },
   }),
@@ -42,6 +45,21 @@ const PetType = new GraphQLObjectType({
       type: ContactType,
       resolve(parent, args) {
         return Contact.findByPk(parent.contactId);
+      },
+    },
+  }),
+});
+
+const RelationshipType = new GraphQLObjectType({
+  name: 'Relationship',
+  fields: () => ({
+    relationshipId: { type: GraphQLID },
+    contactId: { type: GraphQLID },
+    type: { type: GraphQLString },
+    contact: {
+      type: new GraphQLList(ContactType),
+      resolve(parent) {
+        return Contact.findAll({ where: { id: parent.relationshipId } });
       },
     },
   }),
