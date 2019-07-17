@@ -2,6 +2,9 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const db = require('./db');
+const graphqlHTTP = require('express-graphql');
+// const graphiql = require('graphiql');
+const schema = require('../schema');
 const PORT = process.env.PORT || 8080;
 const app = express();
 module.exports = app;
@@ -15,7 +18,13 @@ const createApp = () => {
   app.use(express.urlencoded({ extended: true }));
 
   // auth and api routes
-  app.use('/api', require('./api'));
+  app.use(
+    '/graphql',
+    graphqlHTTP({
+      schema,
+      graphiql: true,
+    })
+  );
 
   // static file-serving middleware
   app.use(express.static(path.join(__dirname, '..', 'public')));
