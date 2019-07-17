@@ -1,6 +1,5 @@
 const graphql = require('graphql');
-// import models and lodash
-const { Contact, Pet } = require('../server/db/models');
+const { Contact, Pet, Relationship } = require('../server/db/models');
 
 const {
   GraphQLObjectType,
@@ -20,8 +19,14 @@ const ContactType = new GraphQLObjectType({
     location: { type: GraphQLString },
     pets: {
       type: new GraphQLList(PetType),
-      resolve(parent, args) {
+      resolve(parent) {
         return Pet.findAll({ where: { contactId: parent.id } });
+      },
+    },
+    relationships: {
+      type: new GraphQLList(ContactType),
+      resolve(parent) {
+        return Relationship.findAll({ where: { contactId: parent.id } });
       },
     },
   }),

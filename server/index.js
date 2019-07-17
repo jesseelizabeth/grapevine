@@ -3,7 +3,6 @@ const express = require('express');
 const morgan = require('morgan');
 const db = require('./db');
 const graphqlHTTP = require('express-graphql');
-// const graphiql = require('graphiql');
 const schema = require('../schema');
 const PORT = process.env.PORT || 8080;
 const app = express();
