@@ -1,5 +1,5 @@
 const graphql = require('graphql');
-const { Contact, Pet, Relationship } = require('../server/db/models');
+const { Contact, Pet, Relationship } = require('../db/models');
 
 const {
   GraphQLObjectType,
@@ -57,9 +57,9 @@ const RelationshipType = new GraphQLObjectType({
     contactId: { type: GraphQLID },
     type: { type: GraphQLString },
     contact: {
-      type: new GraphQLList(ContactType),
+      type: ContactType,
       resolve(parent) {
-        return Contact.findAll({ where: { id: parent.relationshipId } });
+        return Contact.findOne({ where: { id: parent.relationshipId } });
       },
     },
   }),
