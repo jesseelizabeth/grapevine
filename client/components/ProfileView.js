@@ -4,19 +4,21 @@ import { Query } from 'react-apollo';
 
 const GET_CONTACT = gql`
   {
-    contact(id: 8) {
-      displayName
-      title
-      company
-      location
-      pets {
+    query Contact($id: ID!) {
+      contact(id: $id) {
         displayName
-        type
-      }
-      relationships {
-        type
-        contact {
+        title
+        company
+        location
+        pets {
           displayName
+          type
+        }
+        relationships {
+          type
+          contact {
+            displayName
+          }
         }
       }
     }
@@ -25,14 +27,14 @@ const GET_CONTACT = gql`
 
 class ProfileView extends Component {
   render() {
+    const { id } = this.props.location.match;
     return (
-      <Query query={GET_CONTACT}>
+      <Query query={GET_CONTACT} variables={{ id }}>
         {({ loading, error, data }) => {
           if (loading) return <div>Loading</div>;
           if (error) return <div>Error</div>;
-          console.log(data);
           return (
-            <div>
+            <div key={data.contact.id}>
               <div>{data.contact.displayName}</div>
               <div>{data.contact.title}</div>
               <div>{data.contact.company}</div>

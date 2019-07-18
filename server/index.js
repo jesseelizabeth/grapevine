@@ -2,8 +2,11 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const db = require('./db');
-const graphqlHTTP = require('express-graphql');
+// const graphqlHTTP = require('express-graphql');
 // const schema = require('./schema');
+const { ApolloServer } = require('apollo-server-express');
+const typeDefs = require('./schema/schema');
+const resolvers = require('./schema/resolvers');
 const PORT = process.env.PORT || 8080;
 const app = express();
 module.exports = app;
@@ -34,24 +37,26 @@ const createApp = () => {
   });
 
   // error handling endware
+  app.use((req, res, next) => {
+    const error = new Error('Not Found');
+    error.status = 404;
+    next(error);
+  });
+
   app.use((err, req, res, next) => {
     console.error(err);
     console.error(err.stack);
     res.status(err.status || 500).send(err.message || 'Internal server error.');
   });
 };
-const { ApolloServer, gql } = require('apollo-server-express');
-// const { typeDefs, resolvers } = require('./schema');
-const typeDefs = require('./schema/schema');
-const resolvers = require('./schema/resolvers');
 
+// create Apollo server
 const server = new ApolloServer({
-  // These will be defined for both new or existing servers
   typeDefs,
   resolvers,
 });
 
-server.applyMiddleware({ app, path: '/graphql' }); // app is from an existing express app
+server.applyMiddleware({ app, path: '/graphql' });
 
 const startListening = () => {
   // start listening (and create a 'server' object representing our server)
