@@ -46,11 +46,6 @@ class SearchBar extends Component {
   }
 }
 
-// const mapState = state => ({
-//   results: state.search.results,
-//   loading: state.search.loading,
-// });
-
 const mapDispatch = {
   searchDatabase,
 };

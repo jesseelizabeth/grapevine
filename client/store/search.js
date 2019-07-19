@@ -17,8 +17,12 @@ const fetchingResults = () => ({
 // thunk
 export const searchDatabase = keyword => async dispatch => {
   dispatch(fetchingResults());
-  const { data } = await axios.get(`/api/search/${keyword}`);
-  dispatch(searchResults(data));
+  try {
+    const { data } = await axios.get(`/api/search/${keyword}`);
+    dispatch(searchResults(data));
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const initialState = {

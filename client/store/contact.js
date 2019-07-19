@@ -29,8 +29,12 @@ const addedRelationship = payload => ({
 // thunk
 export const getContact = id => async dispatch => {
   dispatch(loadingContact());
-  const { data } = await axios.get(`/api/contacts/${id}`);
-  dispatch(gotContact(data));
+  try {
+    const { data } = await axios.get(`/api/contacts/${id}`);
+    dispatch(gotContact(data));
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const addPet = (id, pet) => async dispatch => {

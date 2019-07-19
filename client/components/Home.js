@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import SearchBar from './SearchBar';
 import { getContacts } from '../store/contacts';
 import AddContact from './AddContact';

@@ -67,7 +67,7 @@ class ProfileView extends Component {
                   {relationship.type}
                 </div>
               ))
-            : 'No Relationships'}
+            : null}
           {relationshipForm ? <AddRelationship id={contact.id} /> : null}
         </div>
         <div>
@@ -80,15 +80,13 @@ class ProfileView extends Component {
               add_circle_outline
             </i>
           </h5>
-          {contact.pets ? (
-            contact.pets.map(pet => (
-              <div key={pet.id}>
-                {pet.displayName} | {pet.type}
-              </div>
-            ))
-          ) : (
-            <div>No Pets</div>
-          )}
+          {contact.pets
+            ? contact.pets.map(pet => (
+                <div key={pet.id}>
+                  {pet.displayName} | {pet.type}
+                </div>
+              ))
+            : null}
           {petForm ? <AddPet id={contact.id} /> : null}
         </div>
       </div>

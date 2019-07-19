@@ -7,7 +7,6 @@ import NoResults from './NoResults';
 class SearchResults extends Component {
   render() {
     const { results, loading } = this.props;
-    console.log(results);
     if (
       !loading &&
       !results.contacts.length &&

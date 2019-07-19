@@ -521,99 +521,6 @@ var mapDispatch = {
 
 /***/ }),
 
-/***/ "./client/components/AllContacts.js":
-/*!******************************************!*\
-  !*** ./client/components/AllContacts.js ***!
-  \******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
- // import { getContacts } from '../store/contacts';
-
-
-
-var AllContacts =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(AllContacts, _Component);
-
-  function AllContacts() {
-    _classCallCheck(this, AllContacts);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(AllContacts).apply(this, arguments));
-  }
-
-  _createClass(AllContacts, [{
-    key: "render",
-    // componentDidMount() {
-    //   this.props.getContacts();
-    // }
-    value: function render() {
-      var _this$props = this.props,
-          loading = _this$props.loading,
-          contacts = _this$props.contacts;
-      if (loading) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading");
-      console.log(contacts);
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "HEY"), contacts.map(function (contact) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          key: contact.id,
-          className: "collection"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, contact.displayName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, contact.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, contact.company), contact.pets ? contact.pets.map(function (pet) {
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            key: pet.id
-          }, pet.displayName);
-        }) : null, contact.relationships ? contact.relationships.map(function (relationship) {
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-            key: relationship.relationshipId,
-            to: "/contacts/".concat(relationship.relationshipId)
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, relationship.type));
-        }) : null);
-      }), "); }}");
-    }
-  }]);
-
-  return AllContacts;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-var mapState = function mapState(state) {
-  return {
-    contacts: state.contacts.all,
-    loading: state.contacts.loading
-  };
-}; // const mapDispatch = {
-//   getContacts,
-// };
-
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapState)(AllContacts));
-
-/***/ }),
-
 /***/ "./client/components/ContactForm.js":
 /*!******************************************!*\
   !*** ./client/components/ContactForm.js ***!
@@ -1142,7 +1049,7 @@ function (_Component) {
             return _this2.handleRedirect(relationship.relationshipId);
           }
         }, relationship.type);
-      }) : 'No Relationships', relationshipForm ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddRelationship__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }) : null, relationshipForm ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddRelationship__WEBPACK_IMPORTED_MODULE_3__["default"], {
         id: contact.id
       }) : null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Pets", ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         onClick: this.togglePetForm,
@@ -1151,7 +1058,7 @@ function (_Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: pet.id
         }, pet.displayName, " | ", pet.type);
-      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "No Pets"), petForm ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddPet__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }) : null, petForm ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddPet__WEBPACK_IMPORTED_MODULE_4__["default"], {
         id: contact.id
       }) : null));
     }
@@ -1265,11 +1172,7 @@ function (_Component) {
   }]);
 
   return SearchBar;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]); // const mapState = state => ({
-//   results: state.search.results,
-//   loading: state.search.loading,
-// });
-
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 var mapDispatch = {
   searchDatabase: _store_search__WEBPACK_IMPORTED_MODULE_2__["searchDatabase"]
@@ -1342,7 +1245,6 @@ function (_Component) {
       var _this$props = this.props,
           results = _this$props.results,
           loading = _this$props.loading;
-      console.log(results);
 
       if (!loading && !results.contacts.length && !results.relContacts.length && !results.pets.length) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NoResults__WEBPACK_IMPORTED_MODULE_4__["default"], null);
@@ -1394,7 +1296,7 @@ var mapState = function mapState(state) {
 /*!************************************!*\
   !*** ./client/components/index.js ***!
   \************************************/
-/*! exports provided: Navbar, ContactForm, ProfileView, AllContacts, Home, SearchBar, SearchResults, PetView, AddContact */
+/*! exports provided: Navbar, ContactForm, ProfileView, Home, SearchBar, SearchResults, PetView, AddContact */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1408,24 +1310,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ProfileView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ProfileView */ "./client/components/ProfileView.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ProfileView", function() { return _ProfileView__WEBPACK_IMPORTED_MODULE_2__["default"]; });
 
-/* harmony import */ var _AllContacts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AllContacts */ "./client/components/AllContacts.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AllContacts", function() { return _AllContacts__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Home */ "./client/components/Home.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Home", function() { return _Home__WEBPACK_IMPORTED_MODULE_3__["default"]; });
 
-/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Home */ "./client/components/Home.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Home", function() { return _Home__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+/* harmony import */ var _SearchBar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SearchBar */ "./client/components/SearchBar.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SearchBar", function() { return _SearchBar__WEBPACK_IMPORTED_MODULE_4__["default"]; });
 
-/* harmony import */ var _SearchBar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SearchBar */ "./client/components/SearchBar.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SearchBar", function() { return _SearchBar__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+/* harmony import */ var _SearchResults__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SearchResults */ "./client/components/SearchResults.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SearchResults", function() { return _SearchResults__WEBPACK_IMPORTED_MODULE_5__["default"]; });
 
-/* harmony import */ var _SearchResults__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SearchResults */ "./client/components/SearchResults.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SearchResults", function() { return _SearchResults__WEBPACK_IMPORTED_MODULE_6__["default"]; });
+/* harmony import */ var _PetView__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./PetView */ "./client/components/PetView.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PetView", function() { return _PetView__WEBPACK_IMPORTED_MODULE_6__["default"]; });
 
-/* harmony import */ var _PetView__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./PetView */ "./client/components/PetView.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PetView", function() { return _PetView__WEBPACK_IMPORTED_MODULE_7__["default"]; });
-
-/* harmony import */ var _AddContact__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./AddContact */ "./client/components/AddContact.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AddContact", function() { return _AddContact__WEBPACK_IMPORTED_MODULE_8__["default"]; });
-
+/* harmony import */ var _AddContact__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./AddContact */ "./client/components/AddContact.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AddContact", function() { return _AddContact__WEBPACK_IMPORTED_MODULE_7__["default"]; });
 
 
 
@@ -1568,20 +1466,28 @@ var getContact = function getContact(id) {
             switch (_context.prev = _context.next) {
               case 0:
                 dispatch(loadingContact());
-                _context.next = 3;
+                _context.prev = 1;
+                _context.next = 4;
                 return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/contacts/".concat(id));
 
-              case 3:
+              case 4:
                 _ref2 = _context.sent;
                 data = _ref2.data;
                 dispatch(gotContact(data));
+                _context.next = 12;
+                break;
 
-              case 6:
+              case 9:
+                _context.prev = 9;
+                _context.t0 = _context["catch"](1);
+                console.error(_context.t0);
+
+              case 12:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee);
+        }, _callee, null, [[1, 9]]);
       }));
 
       return function (_x) {
@@ -1808,7 +1714,7 @@ var getContacts = function getContacts() {
               case 9:
                 _context.prev = 9;
                 _context.t0 = _context["catch"](1);
-                console.log(_context.t0);
+                console.error(_context.t0);
 
               case 12:
               case "end":
@@ -1851,7 +1757,7 @@ var addContact = function addContact(contact) {
               case 8:
                 _context2.prev = 8;
                 _context2.t0 = _context2["catch"](0);
-                console.log(_context2.t0);
+                console.error(_context2.t0);
 
               case 11:
               case "end":
@@ -1993,20 +1899,28 @@ var searchDatabase = function searchDatabase(keyword) {
             switch (_context.prev = _context.next) {
               case 0:
                 dispatch(fetchingResults());
-                _context.next = 3;
+                _context.prev = 1;
+                _context.next = 4;
                 return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/search/".concat(keyword));
 
-              case 3:
+              case 4:
                 _ref2 = _context.sent;
                 data = _ref2.data;
                 dispatch(searchResults(data));
+                _context.next = 12;
+                break;
 
-              case 6:
+              case 9:
+                _context.prev = 9;
+                _context.t0 = _context["catch"](1);
+                console.error(_context.t0);
+
+              case 12:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee);
+        }, _callee, null, [[1, 9]]);
       }));
 
       return function (_x) {
