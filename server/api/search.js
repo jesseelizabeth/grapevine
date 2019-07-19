@@ -18,6 +18,7 @@ router.get('/:keyword', async (req, res, next) => {
           { location: { [Op.substring]: keyword } },
         ],
       },
+      include: [{ model: Relationship }, { model: Pet }],
     });
     const relationships = await Relationship.findAll({
       where: {
@@ -28,6 +29,7 @@ router.get('/:keyword', async (req, res, next) => {
     await relationships.map(async relationship => {
       const contact = await Contact.findOne({
         where: { id: relationship.relationshipId },
+        include: { model: Pet },
       });
       relContacts.push(contact);
     });

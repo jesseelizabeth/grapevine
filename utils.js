@@ -6,6 +6,7 @@ const types = {
   Mom: 'Child',
   Dad: 'Child',
   Child: 'Parent',
+  Sibling: 'Sibling',
 };
 
 const toTitleCase = phrase => {

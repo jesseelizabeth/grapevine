@@ -23,13 +23,21 @@ const addedContact = payload => ({
 // thunk
 export const getContacts = () => async dispatch => {
   dispatch(loadingContacts());
-  const { data } = await axios.get('/api/contacts');
-  dispatch(gotContacts(data));
+  try {
+    const { data } = await axios.get('/api/contacts');
+    dispatch(gotContacts(data));
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const addContact = contact => async dispatch => {
-  const { data } = await axios.post('/api/contacts', contact);
-  dispatch(addedContact(data));
+  try {
+    const { data } = await axios.post('/api/contacts', contact);
+    dispatch(addedContact(data));
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const initialState = {

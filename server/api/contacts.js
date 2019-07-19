@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 const router = require('express').Router();
 const { Contact, Relationship, Pet } = require('../db/models');
 module.exports = router;
@@ -31,13 +32,84 @@ router.get('/:contactId', async (req, res, next) => {
 // add a contact
 router.post('/', async (req, res, next) => {
   try {
-    const { displayName, title, company, location } = req.body;
-    const contact = await Contact.create({
+    const {
       displayName,
       title,
       company,
       location,
+      relationshipName,
+      relationshipType,
+      petName,
+      petType,
+    } = req.body;
+    const [contact, created] = await Contact.findOrCreate({
+      where: { displayName: displayName.toLowerCase() },
+      defaults: {
+        displayName,
+        title,
+        company,
+        location,
+      },
     });
+    // if contact already exists, update contact with new info
+    if (!created) {
+      if (title) {
+        await contact.update({ title });
+      }
+      if (company) {
+        await contact.update({ company });
+      }
+      if (location) {
+        await contact.update({ location });
+      }
+    }
+    // add pet
+    if (petName) {
+      await Pet.create({
+        displayName: petName,
+        type: petType,
+        contactId: contact.id,
+      });
+    }
+
+    // add relationship
+    // check if relationship is a contact
+    if (relationshipName) {
+      const foundContact = await Contact.findOne({
+        where: { displayName: relationshipName },
+      });
+      // if contact exists, create the relationship
+      if (foundContact) {
+        await Relationship.create({
+          type: relationshipType,
+          contactId: contact.id,
+          relationshipId: foundContact.id,
+        });
+        // create reverse relationship
+        await Relationship.create({
+          type: types[relationshipType],
+          contactId: foundContact.id,
+          relationshipId: contact.id,
+        });
+      } else {
+        // if contact doesn't exist, add the contact and create the relationship
+        const newContact = await Contact.create({
+          displayName: relationshipName,
+        });
+        await Relationship.create({
+          type: relationshipType,
+          contactId: contact.id,
+          relationshipId: newContact.id,
+        });
+        // create reverse relationship
+        await Relationship.create({
+          type: types[relationshipType],
+          contactId: newContact.id,
+          relationshipId: contact.id,
+        });
+      }
+    }
+
     res.send(contact);
   } catch (error) {
     next(error);

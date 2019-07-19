@@ -12,6 +12,10 @@ class ContactForm extends Component {
       title: '',
       company: '',
       location: '',
+      relationshipName: '',
+      relationshipType: '',
+      petName: '',
+      petType: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleAddContact = this.handleAddContact.bind(this);
@@ -22,58 +26,123 @@ class ContactForm extends Component {
     });
   }
   handleAddContact() {
-    const { displayName, title, company, location } = this.state;
+    const {
+      displayName,
+      title,
+      company,
+      location,
+      relationshipName,
+      relationshipType,
+      petName,
+      petType,
+    } = this.state;
     console.log(this.state);
-    const contact = { displayName, title, company, location };
+    const contact = {
+      displayName,
+      title,
+      company,
+      location,
+      relationshipName,
+      relationshipType,
+      petName,
+      petType,
+    };
     this.props.addContact(contact);
-    this.setState({ displayName: '', title: '', company: '', location: '' });
+    this.setState({
+      displayName: '',
+      title: '',
+      company: '',
+      location: '',
+      relationshipName: '',
+      relationshipType: '',
+      petName: '',
+      petType: '',
+    });
   }
   render() {
     return (
-      <div className="row">
-        <form className="col s8 offset-s2">
-          <div className="row">
-            <div className="input-field col s6">
-              <input
-                placeholder="Name"
-                type="text"
-                name="displayName"
-                onChange={this.handleChange}
-              />
+      <div>
+        <div className="row">
+          <form className="col s8 offset-s2">
+            <div className="row">
+              <div className="input-field col s6">
+                <input
+                  placeholder="Name"
+                  type="text"
+                  name="displayName"
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="input-field col s6">
+                <input
+                  placeholder="Title"
+                  type="text"
+                  name="title"
+                  onChange={this.handleChange}
+                />
+              </div>
             </div>
-            <div className="input-field col s6">
-              <input
-                placeholder="Title"
-                type="text"
-                name="title"
-                onChange={this.handleChange}
-              />
+            <div className="row">
+              <div className="input-field col s6">
+                <input
+                  placeholder="Company"
+                  type="text"
+                  name="company"
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="input-field col s6">
+                <input
+                  placeholder="Location"
+                  type="text"
+                  name="location"
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="row">
+                <div className="input-field col s6">
+                  <input
+                    placeholder="Relationship Name"
+                    type="text"
+                    name="relationshipName"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className="input-field col s6">
+                  <input
+                    placeholder="Relationship Type"
+                    type="text"
+                    name="relationshipType"
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <div className="input-field col s6">
+                  <input
+                    placeholder="Pet Name"
+                    type="text"
+                    name="petName"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className="input-field col s6">
+                  <input
+                    placeholder="Pet Type"
+                    type="text"
+                    name="petType"
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="input-field col s6">
-              <input
-                placeholder="Company"
-                type="text"
-                name="company"
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="input-field col s6">
-              <input
-                placeholder="Location"
-                type="text"
-                name="location"
-                onChange={this.handleChange}
-              />
-            </div>
-          </div>
-        </form>
-        <button type="submit" onClick={this.handleAddContact}>
-          Add Contact
-        </button>
-        <AddRelationship />
-        <AddPet />
+          </form>
+        </div>
+        <div className="row">
+          <button type="submit" onClick={this.handleAddContact}>
+            Add Contact
+          </button>
+        </div>
       </div>
     );
   }

@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { ProfileView, AllContacts, Home, SearchResults } from './components';
+import {
+  ProfileView,
+  AllContacts,
+  Home,
+  SearchResults,
+  PetView,
+} from './components';
 
 class Routes extends Component {
   render() {
@@ -9,6 +15,7 @@ class Routes extends Component {
         <Route exact path="/" component={Home} />
         <Route path="/contacts/:id" component={ProfileView} />
         <Route path="/contacts" component={AllContacts} />
+        <Route path="/pets/:id" component={PetView} />
         <Route path="/results" component={SearchResults} />
       </Switch>
     );
