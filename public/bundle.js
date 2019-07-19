@@ -436,52 +436,139 @@ var mapState = function mapState(state) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _AddRelationship__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddRelationship */ "./client/components/AddRelationship.js");
-/* harmony import */ var _AddPet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AddPet */ "./client/components/AddPet.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store_contacts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/contacts */ "./client/store/contacts.js");
+/* harmony import */ var _AddRelationship__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AddRelationship */ "./client/components/AddRelationship.js");
+/* harmony import */ var _AddPet__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AddPet */ "./client/components/AddPet.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
 
 
-var ContactForm = function ContactForm(props) {
-  var handleSubmit = props.handleSubmit,
-      error = props.error;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-    className: "col s8 offset-s2",
-    onSubmit: handleSubmit
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "input-field col s6"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    placeholder: "Name",
-    type: "text",
-    name: "displayName"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "input-field col s6"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    placeholder: "Title",
-    type: "text",
-    name: "title"
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "input-field col s6"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    placeholder: "Company",
-    type: "text",
-    name: "company"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "input-field col s6"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    placeholder: "Location",
-    type: "text",
-    name: "location"
-  }))), error && error.response && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " ", error.response.data, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddRelationship__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddPet__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+
+
+
+var ContactForm =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(ContactForm, _Component);
+
+  function ContactForm() {
+    var _this;
+
+    _classCallCheck(this, ContactForm);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ContactForm).call(this));
+    _this.state = {
+      displayName: '',
+      title: '',
+      company: '',
+      location: ''
+    };
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleAddContact = _this.handleAddContact.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(ContactForm, [{
+    key: "handleChange",
+    value: function handleChange(event) {
+      this.setState(_defineProperty({}, event.target.name, event.target.value));
+    }
+  }, {
+    key: "handleAddContact",
+    value: function handleAddContact() {
+      var _this$state = this.state,
+          displayName = _this$state.displayName,
+          title = _this$state.title,
+          company = _this$state.company,
+          location = _this$state.location;
+      console.log(this.state);
+      var contact = {
+        displayName: displayName,
+        title: title,
+        company: company,
+        location: location
+      };
+      this.props.addContact(contact);
+      this.setState({
+        displayName: '',
+        title: '',
+        company: '',
+        location: ''
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "col s8 offset-s2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-field col s6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        placeholder: "Name",
+        type: "text",
+        name: "displayName",
+        onChange: this.handleChange
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-field col s6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        placeholder: "Title",
+        type: "text",
+        name: "title",
+        onChange: this.handleChange
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-field col s6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        placeholder: "Company",
+        type: "text",
+        name: "company",
+        onChange: this.handleChange
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-field col s6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        placeholder: "Location",
+        type: "text",
+        name: "location",
+        onChange: this.handleChange
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        onClick: this.handleAddContact
+      }, "Add Contact"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddRelationship__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddPet__WEBPACK_IMPORTED_MODULE_4__["default"], null));
+    }
+  }]);
+
+  return ContactForm;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+var mapDispatch = {
+  addContact: _store_contacts__WEBPACK_IMPORTED_MODULE_2__["addContact"]
 };
-
-/* harmony default export */ __webpack_exports__["default"] = (ContactForm);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, mapDispatch)(ContactForm));
 
 /***/ }),
 
@@ -899,14 +986,23 @@ var initialState = {
 /*!**********************************!*\
   !*** ./client/store/contacts.js ***!
   \**********************************/
-/*! exports provided: getContacts, default */
+/*! exports provided: getContacts, addContact, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getContacts", function() { return getContacts; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addContact", function() { return addContact; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -920,7 +1016,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
  // action types
 
 var LOADING_CONTACTS = 'LOADING_CONTACTS';
-var GET_CONTACTS = 'GET_CONTACTS'; // action creators
+var GET_CONTACTS = 'GET_CONTACTS';
+var ADD_CONTACT = 'ADD_CONTACT'; // action creators
 
 var loadingContacts = function loadingContacts() {
   return {
@@ -928,9 +1025,16 @@ var loadingContacts = function loadingContacts() {
   };
 };
 
-var contacts = function contacts(payload) {
+var gotContacts = function gotContacts(payload) {
   return {
     type: GET_CONTACTS,
+    payload: payload
+  };
+};
+
+var addedContact = function addedContact(payload) {
+  return {
+    type: ADD_CONTACT,
     payload: payload
   };
 }; // thunk
@@ -956,7 +1060,7 @@ var getContacts = function getContacts() {
               case 3:
                 _ref2 = _context.sent;
                 data = _ref2.data;
-                dispatch(contacts(data));
+                dispatch(gotContacts(data));
 
               case 6:
               case "end":
@@ -968,6 +1072,41 @@ var getContacts = function getContacts() {
 
       return function (_x) {
         return _ref.apply(this, arguments);
+      };
+    }()
+  );
+};
+var addContact = function addContact(contact) {
+  return (
+    /*#__PURE__*/
+    function () {
+      var _ref3 = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee2(dispatch) {
+        var _ref4, data;
+
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/contacts', contact);
+
+              case 2:
+                _ref4 = _context2.sent;
+                data = _ref4.data;
+                dispatch(addedContact(data));
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function (_x2) {
+        return _ref3.apply(this, arguments);
       };
     }()
   );
@@ -991,6 +1130,11 @@ var initialState = {
       return _objectSpread({}, state, {
         all: action.payload,
         loading: false
+      });
+
+    case ADD_CONTACT:
+      return _objectSpread({}, state, {
+        all: [].concat(_toConsumableArray(state.all), [action.payload])
       });
 
     default:

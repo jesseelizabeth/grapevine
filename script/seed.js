@@ -8,63 +8,54 @@ const seed = async () => {
   // seed your database here!
   await Promise.all([
     Contact.create({
-      id: 1,
       displayName: 'Kenneth Lai',
       title: 'Software Engineer',
       company: 'Grapevine',
       location: 'New York City',
     }),
     Contact.create({
-      id: 2,
       displayName: 'Andrew Reiner',
       title: 'Cofounder',
       company: 'Grapevine',
       location: 'New York City',
     }),
     Contact.create({
-      id: 3,
       displayName: 'Lloyd Emelle',
       title: 'Lead Hacker',
       company: 'Grapevine',
       location: 'New York City',
     }),
     Contact.create({
-      id: 4,
       displayName: 'Rich Prior',
       title: 'Lead Designer',
       company: 'Grapevine',
       location: 'New York City',
     }),
     Contact.create({
-      id: 5,
       displayName: 'Gina Lee',
       title: 'CEO',
       company: 'BanCard Plus',
       location: 'New York City',
     }),
     Contact.create({
-      id: 6,
       displayName: 'Kristen Reiner',
       title: 'Investor Relations Business Development',
       company: 'The Blackstone Group',
       location: 'New York City',
     }),
     Contact.create({
-      id: 7,
       displayName: 'Stacey',
       title: null,
       company: null,
       location: 'New York City',
     }),
     Contact.create({
-      id: 8,
       displayName: 'Dylan Reiner',
       title: 'Baby',
       company: null,
       location: 'New York City',
     }),
     Contact.create({
-      id: 9,
       displayName: 'Leah Prior',
       title: null,
       company: null,
