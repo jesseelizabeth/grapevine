@@ -8,7 +8,9 @@ const Contact = db.define('contact', {
     allowNull: false,
     get() {
       const name = this.getDataValue('displayName');
-      return toTitleCase(name);
+      if (name) {
+        return toTitleCase(name);
+      }
     },
     set(val) {
       if (val) {
@@ -20,11 +22,15 @@ const Contact = db.define('contact', {
     type: Sequelize.STRING,
     get() {
       const title = this.getDataValue('title');
-      return toTitleCase(title);
+      if (title) {
+        return toTitleCase(title);
+      }
     },
     set(val) {
       if (val) {
         this.setDataValue('title', val.toLowerCase());
+      } else {
+        this.setDataValue('title', (val = null));
       }
     },
   },
@@ -32,11 +38,15 @@ const Contact = db.define('contact', {
     type: Sequelize.STRING,
     get() {
       const company = this.getDataValue('company');
-      return toTitleCase(company);
+      if (company) {
+        return toTitleCase(company);
+      }
     },
     set(val) {
       if (val) {
         this.setDataValue('company', val.toLowerCase());
+      } else {
+        this.setDataValue('company', (val = null));
       }
     },
   },
@@ -44,11 +54,15 @@ const Contact = db.define('contact', {
     type: Sequelize.STRING,
     get() {
       const location = this.getDataValue('location');
-      return toTitleCase(location);
+      if (location) {
+        return toTitleCase(location);
+      }
     },
     set(val) {
       if (val) {
         this.setDataValue('location', val.toLowerCase());
+      } else {
+        this.setDataValue('location', (val = null));
       }
     },
   },

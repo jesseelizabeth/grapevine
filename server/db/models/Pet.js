@@ -8,7 +8,9 @@ const Pet = db.define('pet', {
     allowNull: false,
     get() {
       const name = this.getDataValue('displayName');
-      return toTitleCase(name);
+      if (name) {
+        return toTitleCase(name);
+      }
     },
     set(val) {
       if (val) {
@@ -20,11 +22,15 @@ const Pet = db.define('pet', {
     type: Sequelize.STRING,
     get() {
       const type = this.getDataValue('type');
-      return toTitleCase(type);
+      if (type) {
+        return toTitleCase(type);
+      }
     },
     set(val) {
       if (val) {
         this.setDataValue('type', val.toLowerCase());
+      } else {
+        this.setDataValue('type', (val = null));
       }
     },
   },

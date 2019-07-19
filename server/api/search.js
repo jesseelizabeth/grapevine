@@ -7,7 +7,8 @@ module.exports = router;
 // search functionality
 router.get('/:keyword', async (req, res, next) => {
   try {
-    const { keyword } = req.params;
+    let { keyword } = req.params;
+    keyword = keyword.toLowerCase();
     const contacts = await Contact.findAll({
       where: {
         [Op.or]: [

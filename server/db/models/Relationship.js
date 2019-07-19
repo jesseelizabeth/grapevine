@@ -7,11 +7,15 @@ const Relationship = db.define('relationship', {
     type: Sequelize.STRING,
     get() {
       const type = this.getDataValue('type');
-      return toTitleCase(type);
+      if (type) {
+        return toTitleCase(type);
+      }
     },
     set(val) {
       if (val) {
         this.setDataValue('type', val.toLowerCase());
+      } else {
+        this.setDataValue('type', null);
       }
     },
   },
