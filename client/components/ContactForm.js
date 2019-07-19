@@ -1,76 +1,31 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { addContact } from '../store/contacts';
-import AddRelationship from './AddRelationship';
-import AddPet from './AddPet';
 
 class ContactForm extends Component {
-  constructor() {
-    super();
-    this.state = {
-      displayName: '',
-      title: '',
-      company: '',
-      location: '',
-      relationshipName: '',
-      relationshipType: '',
-      petName: '',
-      petType: '',
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleAddContact = this.handleAddContact.bind(this);
-  }
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-  }
-  handleAddContact() {
-    const {
-      displayName,
-      title,
-      company,
-      location,
-      relationshipName,
-      relationshipType,
-      petName,
-      petType,
-    } = this.state;
-    console.log(this.state);
-    const contact = {
-      displayName,
-      title,
-      company,
-      location,
-      relationshipName,
-      relationshipType,
-      petName,
-      petType,
-    };
-    this.props.addContact(contact);
-    this.setState({
-      displayName: '',
-      title: '',
-      company: '',
-      location: '',
-      relationshipName: '',
-      relationshipType: '',
-      petName: '',
-      petType: '',
-    });
-  }
   render() {
+    const {
+      handleAddContact,
+      handleChange,
+      displayName,
+      title,
+      company,
+      location,
+      petName,
+      petType,
+      relationshipName,
+      relationshipType,
+    } = this.props;
     return (
       <div>
         <div className="row">
-          <form className="col s8 offset-s2">
+          <form className="col s8 offset-s2" onSubmit={handleAddContact}>
             <div className="row">
               <div className="input-field col s6">
                 <input
                   placeholder="Name"
                   type="text"
                   name="displayName"
-                  onChange={this.handleChange}
+                  value={displayName}
+                  onChange={handleChange}
                 />
               </div>
               <div className="input-field col s6">
@@ -78,7 +33,8 @@ class ContactForm extends Component {
                   placeholder="Title"
                   type="text"
                   name="title"
-                  onChange={this.handleChange}
+                  value={title}
+                  onChange={handleChange}
                 />
               </div>
             </div>
@@ -88,7 +44,8 @@ class ContactForm extends Component {
                   placeholder="Company"
                   type="text"
                   name="company"
-                  onChange={this.handleChange}
+                  value={company}
+                  onChange={handleChange}
                 />
               </div>
               <div className="input-field col s6">
@@ -96,7 +53,8 @@ class ContactForm extends Component {
                   placeholder="Location"
                   type="text"
                   name="location"
-                  onChange={this.handleChange}
+                  value={location}
+                  onChange={handleChange}
                 />
               </div>
               <div className="row">
@@ -105,7 +63,8 @@ class ContactForm extends Component {
                     placeholder="Relationship Name"
                     type="text"
                     name="relationshipName"
-                    onChange={this.handleChange}
+                    value={relationshipName}
+                    onChange={handleChange}
                   />
                 </div>
                 <div className="input-field col s6">
@@ -113,7 +72,8 @@ class ContactForm extends Component {
                     placeholder="Relationship Type"
                     type="text"
                     name="relationshipType"
-                    onChange={this.handleChange}
+                    value={relationshipType}
+                    onChange={handleChange}
                   />
                 </div>
               </div>
@@ -123,7 +83,8 @@ class ContactForm extends Component {
                     placeholder="Pet Name"
                     type="text"
                     name="petName"
-                    onChange={this.handleChange}
+                    value={petName}
+                    onChange={handleChange}
                   />
                 </div>
                 <div className="input-field col s6">
@@ -131,28 +92,20 @@ class ContactForm extends Component {
                     placeholder="Pet Type"
                     type="text"
                     name="petType"
-                    onChange={this.handleChange}
+                    value={petType}
+                    onChange={handleChange}
                   />
                 </div>
               </div>
             </div>
+            <div className="row">
+              <button type="submit">Add Contact</button>
+            </div>
           </form>
-        </div>
-        <div className="row">
-          <button type="submit" onClick={this.handleAddContact}>
-            Add Contact
-          </button>
         </div>
       </div>
     );
   }
 }
 
-const mapDispatch = {
-  addContact,
-};
-
-export default connect(
-  null,
-  mapDispatch
-)(ContactForm);
+export default ContactForm;

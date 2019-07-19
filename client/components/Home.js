@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ContactForm from './ContactForm';
+
 import SearchBar from './SearchBar';
 import { getContacts } from '../store/contacts';
+import AddContact from './AddContact';
 
 class Home extends Component {
   componentDidMount() {
@@ -12,7 +13,7 @@ class Home extends Component {
     return (
       <div className="container">
         <SearchBar />
-        <ContactForm />
+        <AddContact />
       </div>
     );
   }

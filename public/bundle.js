@@ -187,10 +187,10 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./client/components/AddPet.js":
-/*!*************************************!*\
-  !*** ./client/components/AddPet.js ***!
-  \*************************************/
+/***/ "./client/components/AddContact.js":
+/*!*****************************************!*\
+  !*** ./client/components/AddContact.js ***!
+  \*****************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -198,7 +198,14 @@ function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store_contacts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/contacts */ "./client/store/contacts.js");
+/* harmony import */ var _ContactForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ContactForm */ "./client/components/ContactForm.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -208,9 +215,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -218,124 +225,63 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var AddPet =
+
+
+
+var AddContact =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(AddPet, _Component);
+  _inherits(AddContact, _Component);
 
-  function AddPet() {
-    _classCallCheck(this, AddPet);
+  function AddContact() {
+    var _this;
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(AddPet).apply(this, arguments));
+    _classCallCheck(this, AddContact);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(AddContact).call(this));
+    _this.state = {
+      displayName: '',
+      title: '',
+      company: '',
+      location: '',
+      relationshipName: '',
+      relationshipType: '',
+      petName: '',
+      petType: ''
+    };
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleAddContact = _this.handleAddContact.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
-  _createClass(AddPet, [{
+  _createClass(AddContact, [{
+    key: "handleChange",
+    value: function handleChange(event) {
+      this.setState(_defineProperty({}, event.target.name, event.target.value));
+    }
+  }, {
+    key: "handleAddContact",
+    value: function handleAddContact(event) {
+      event.preventDefault();
+      this.props.addContact(this.state);
+    }
+  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "col s8 offset-s2"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-field col s6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        placeholder: "Pet Name",
-        type: "text",
-        name: "pet displayName"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-field col s6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        placeholder: "Pet Type",
-        type: "text",
-        name: "pet type"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "submit"
-      }, "Add Pet")));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ContactForm__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({}, this.state, {
+        handleChange: this.handleChange,
+        handleAddContact: this.handleAddContact
+      })));
     }
   }]);
 
-  return AddPet;
+  return AddContact;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (AddPet);
-
-/***/ }),
-
-/***/ "./client/components/AddRelationship.js":
-/*!**********************************************!*\
-  !*** ./client/components/AddRelationship.js ***!
-  \**********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-var AddRelationship =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(AddRelationship, _Component);
-
-  function AddRelationship() {
-    _classCallCheck(this, AddRelationship);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(AddRelationship).apply(this, arguments));
-  }
-
-  _createClass(AddRelationship, [{
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "col s8 offset-s2"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-field col s6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        placeholder: "Relationship Name",
-        type: "text",
-        name: "relationship displayName"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-field col s6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        placeholder: "Relationship Type",
-        type: "text",
-        name: "relationship type"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "submit"
-      }, "Add Relationship")));
-    }
-  }]);
-
-  return AddRelationship;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-/* harmony default export */ __webpack_exports__["default"] = (AddRelationship);
+var mapDispatch = {
+  addContact: _store_contacts__WEBPACK_IMPORTED_MODULE_2__["addContact"]
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, mapDispatch)(AddContact));
 
 /***/ }),
 
@@ -443,13 +389,7 @@ var mapState = function mapState(state) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _store_contacts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/contacts */ "./client/store/contacts.js");
-/* harmony import */ var _AddRelationship__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AddRelationship */ "./client/components/AddRelationship.js");
-/* harmony import */ var _AddPet__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AddPet */ "./client/components/AddPet.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -459,17 +399,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
 
 
 
@@ -479,73 +415,30 @@ function (_Component) {
   _inherits(ContactForm, _Component);
 
   function ContactForm() {
-    var _this;
-
     _classCallCheck(this, ContactForm);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ContactForm).call(this));
-    _this.state = {
-      displayName: '',
-      title: '',
-      company: '',
-      location: '',
-      relationshipName: '',
-      relationshipType: '',
-      petName: '',
-      petType: ''
-    };
-    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
-    _this.handleAddContact = _this.handleAddContact.bind(_assertThisInitialized(_this));
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(ContactForm).apply(this, arguments));
   }
 
   _createClass(ContactForm, [{
-    key: "handleChange",
-    value: function handleChange(event) {
-      this.setState(_defineProperty({}, event.target.name, event.target.value));
-    }
-  }, {
-    key: "handleAddContact",
-    value: function handleAddContact() {
-      var _this$state = this.state,
-          displayName = _this$state.displayName,
-          title = _this$state.title,
-          company = _this$state.company,
-          location = _this$state.location,
-          relationshipName = _this$state.relationshipName,
-          relationshipType = _this$state.relationshipType,
-          petName = _this$state.petName,
-          petType = _this$state.petType;
-      console.log(this.state);
-      var contact = {
-        displayName: displayName,
-        title: title,
-        company: company,
-        location: location,
-        relationshipName: relationshipName,
-        relationshipType: relationshipType,
-        petName: petName,
-        petType: petType
-      };
-      this.props.addContact(contact);
-      this.setState({
-        displayName: '',
-        title: '',
-        company: '',
-        location: '',
-        relationshipName: '',
-        relationshipType: '',
-        petName: '',
-        petType: ''
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
+      var _this$props = this.props,
+          handleAddContact = _this$props.handleAddContact,
+          handleChange = _this$props.handleChange,
+          displayName = _this$props.displayName,
+          title = _this$props.title,
+          company = _this$props.company,
+          location = _this$props.location,
+          petName = _this$props.petName,
+          petType = _this$props.petType,
+          relationshipName = _this$props.relationshipName,
+          relationshipType = _this$props.relationshipType;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "col s8 offset-s2"
+        className: "col s8 offset-s2",
+        onSubmit: handleAddContact
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -554,14 +447,16 @@ function (_Component) {
         placeholder: "Name",
         type: "text",
         name: "displayName",
-        onChange: this.handleChange
+        value: displayName,
+        onChange: handleChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "input-field col s6"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         placeholder: "Title",
         type: "text",
         name: "title",
-        onChange: this.handleChange
+        value: title,
+        onChange: handleChange
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -570,14 +465,16 @@ function (_Component) {
         placeholder: "Company",
         type: "text",
         name: "company",
-        onChange: this.handleChange
+        value: company,
+        onChange: handleChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "input-field col s6"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         placeholder: "Location",
         type: "text",
         name: "location",
-        onChange: this.handleChange
+        value: location,
+        onChange: handleChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -586,14 +483,16 @@ function (_Component) {
         placeholder: "Relationship Name",
         type: "text",
         name: "relationshipName",
-        onChange: this.handleChange
+        value: relationshipName,
+        onChange: handleChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "input-field col s6"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         placeholder: "Relationship Type",
         type: "text",
         name: "relationshipType",
-        onChange: this.handleChange
+        value: relationshipType,
+        onChange: handleChange
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -602,30 +501,28 @@ function (_Component) {
         placeholder: "Pet Name",
         type: "text",
         name: "petName",
-        onChange: this.handleChange
+        value: petName,
+        onChange: handleChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "input-field col s6"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         placeholder: "Pet Type",
         type: "text",
         name: "petType",
-        onChange: this.handleChange
-      })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        value: petType,
+        onChange: handleChange
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "submit",
-        onClick: this.handleAddContact
-      }, "Add Contact")));
+        type: "submit"
+      }, "Add Contact")))));
     }
   }]);
 
   return ContactForm;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-var mapDispatch = {
-  addContact: _store_contacts__WEBPACK_IMPORTED_MODULE_2__["addContact"]
-};
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, mapDispatch)(ContactForm));
+/* harmony default export */ __webpack_exports__["default"] = (ContactForm);
 
 /***/ }),
 
@@ -725,9 +622,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _ContactForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ContactForm */ "./client/components/ContactForm.js");
-/* harmony import */ var _SearchBar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SearchBar */ "./client/components/SearchBar.js");
-/* harmony import */ var _store_contacts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store/contacts */ "./client/store/contacts.js");
+/* harmony import */ var _SearchBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SearchBar */ "./client/components/SearchBar.js");
+/* harmony import */ var _store_contacts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/contacts */ "./client/store/contacts.js");
+/* harmony import */ var _AddContact__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AddContact */ "./client/components/AddContact.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -773,7 +670,7 @@ function (_Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchBar__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ContactForm__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchBar__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddContact__WEBPACK_IMPORTED_MODULE_4__["default"], null));
     }
   }]);
 
@@ -781,7 +678,7 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 var mapDispatch = {
-  getContacts: _store_contacts__WEBPACK_IMPORTED_MODULE_4__["getContacts"]
+  getContacts: _store_contacts__WEBPACK_IMPORTED_MODULE_3__["getContacts"]
 };
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, mapDispatch)(Home));
 
@@ -1276,7 +1173,7 @@ var mapState = function mapState(state) {
 /*!************************************!*\
   !*** ./client/components/index.js ***!
   \************************************/
-/*! exports provided: Navbar, ContactForm, ProfileView, AllContacts, Home, SearchBar, SearchResults, PetView */
+/*! exports provided: Navbar, ContactForm, ProfileView, AllContacts, Home, SearchBar, SearchResults, PetView, AddContact */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1304,6 +1201,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _PetView__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./PetView */ "./client/components/PetView.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PetView", function() { return _PetView__WEBPACK_IMPORTED_MODULE_7__["default"]; });
+
+/* harmony import */ var _AddContact__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./AddContact */ "./client/components/AddContact.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AddContact", function() { return _AddContact__WEBPACK_IMPORTED_MODULE_8__["default"]; });
+
 
 
 
