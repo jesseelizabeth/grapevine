@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getContact } from '../store/contact';
+import AddRelationship from './AddRelationship';
+import AddPet from './AddPet';
 
 class ProfileView extends Component {
   constructor() {
     super();
+    this.state = {
+      relationshipForm: null,
+      petForm: null,
+    };
     this.handleRedirect = this.handleRedirect.bind(this);
+    this.toggleForm = this.toggleForm.bind(this);
   }
   componentDidMount() {
     const { id } = this.props.match.params;
@@ -14,33 +21,71 @@ class ProfileView extends Component {
   handleRedirect(id) {
     this.props.getContact(id);
   }
+  toggleForm(form) {
+    if (form === 'relationships') {
+      this.setState({ relationshipForm: true, petForm: null });
+    } else {
+      this.setState({ relationshipForm: null, petForm: true });
+    }
+  }
   render() {
     const { loading, contact } = this.props;
-    console.log(contact);
+    const { relationshipForm, petForm } = this.state;
     if (loading) return <div>Loading</div>;
     return (
-      <div className="row">
-        <div className="col s12 m6 offset-m3">
-          <div className="card">
-            <div className="card-content">
-              <div className="card-title">{contact.displayName}</div>
-              <div>Title: {contact.title}</div>
-              <div>Company: {contact.company}</div>
-              {contact.relationships
-                ? contact.relationships.map(relationship => (
-                    <div
-                      className="blue-text"
-                      key={relationship.relationshipId}
-                      onClick={() =>
-                        this.handleRedirect(relationship.relationshipId)
-                      }
-                    >
-                      {relationship.type}
-                    </div>
-                  ))
-                : null}
-            </div>
+      <div className="container">
+        <div>
+          <h4>{contact.displayName}</h4>
+          <div>
+            {contact.title} | {contact.company}
           </div>
+          <div>{contact.location}</div>
+        </div>
+        <div>
+          <h5 className="col">
+            Relationships{' '}
+            <i
+              onClick={() => this.toggleForm('relationships')}
+              className="col material-icons blue-text"
+            >
+              add_circle_outline
+            </i>
+          </h5>
+          {contact.relationships
+            ? contact.relationships.map(relationship => (
+                <div
+                  className="blue-text"
+                  key={relationship.relationshipId}
+                  onClick={() =>
+                    this.handleRedirect(relationship.relationshipId)
+                  }
+                >
+                  {relationship.type}
+                </div>
+              ))
+            : 'No Relationships'}
+          {relationshipForm ? <AddRelationship id={contact.id} /> : null}
+        </div>
+        <div>
+          <h5>
+            Pets{' '}
+            <i
+              onClick={() => this.toggleForm('pets')}
+              className="col material-icons blue-text"
+            >
+              add_circle_outline
+            </i>
+          </h5>
+          {contact.pets ? (
+            contact.pets.map(pet => (
+              <div key={pet.id}>
+                {pet.displayName} | {pet.type}
+              </div>
+            ))
+          ) : (
+            <div>No Pets</div>
+          )}
+          {petForm ? <AddPet id={contact.id} /> : null}
         </div>
       </div>
     );

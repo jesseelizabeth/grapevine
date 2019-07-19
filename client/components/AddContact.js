@@ -27,6 +27,16 @@ class AddContact extends Component {
   handleAddContact(event) {
     event.preventDefault();
     this.props.addContact(this.state);
+    this.setState({
+      displayName: '',
+      title: '',
+      company: '',
+      location: '',
+      relationshipName: '',
+      relationshipType: '',
+      petName: '',
+      petType: '',
+    });
   }
   render() {
     return (

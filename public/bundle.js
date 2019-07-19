@@ -264,6 +264,16 @@ function (_Component) {
     value: function handleAddContact(event) {
       event.preventDefault();
       this.props.addContact(this.state);
+      this.setState({
+        displayName: '',
+        title: '',
+        company: '',
+        location: '',
+        relationshipName: '',
+        relationshipType: '',
+        petName: '',
+        petType: ''
+      });
     }
   }, {
     key: "render",
@@ -282,6 +292,194 @@ var mapDispatch = {
   addContact: _store_contacts__WEBPACK_IMPORTED_MODULE_2__["addContact"]
 };
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, mapDispatch)(AddContact));
+
+/***/ }),
+
+/***/ "./client/components/AddPet.js":
+/*!*************************************!*\
+  !*** ./client/components/AddPet.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store_contact__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/contact */ "./client/store/contact.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var AddPet =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(AddPet, _Component);
+
+  function AddPet() {
+    var _this;
+
+    _classCallCheck(this, AddPet);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(AddPet).call(this));
+    _this.state = {
+      displayName: '',
+      type: ''
+    };
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleAddPet = _this.handleAddPet.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(AddPet, [{
+    key: "handleChange",
+    value: function handleChange(event) {
+      this.setState(_defineProperty({}, event.target.name, event.target.value));
+    }
+  }, {
+    key: "handleAddPet",
+    value: function handleAddPet(event) {
+      event.preventDefault();
+      this.props.addPet(this.props.id, this.state);
+      this.setState({
+        displayName: '',
+        type: ''
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleAddPet
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-field col s6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        placeholder: "Pet Name",
+        type: "text",
+        name: "displayName",
+        onChange: this.handleChange
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-field col s6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        placeholder: "Pet Type",
+        type: "text",
+        name: "type",
+        onChange: this.handleChange
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn",
+        type: "submit"
+      }, "Add Pet")));
+    }
+  }]);
+
+  return AddPet;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+var mapDispatch = {
+  addPet: _store_contact__WEBPACK_IMPORTED_MODULE_2__["addPet"]
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, mapDispatch)(AddPet));
+
+/***/ }),
+
+/***/ "./client/components/AddRelationship.js":
+/*!**********************************************!*\
+  !*** ./client/components/AddRelationship.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var AddRelationship =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(AddRelationship, _Component);
+
+  function AddRelationship() {
+    _classCallCheck(this, AddRelationship);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(AddRelationship).apply(this, arguments));
+  }
+
+  _createClass(AddRelationship, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "col s8 offset-s2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-field col s6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        placeholder: "Relationship Name",
+        type: "text",
+        name: "relationship displayName"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-field col s6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        placeholder: "Relationship Type",
+        type: "text",
+        name: "relationship type"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit"
+      }, "Add Relationship")));
+    }
+  }]);
+
+  return AddRelationship;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (AddRelationship);
 
 /***/ }),
 
@@ -389,138 +587,101 @@ var mapState = function mapState(state) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
-
-var ContactForm =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(ContactForm, _Component);
-
-  function ContactForm() {
-    _classCallCheck(this, ContactForm);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(ContactForm).apply(this, arguments));
-  }
-
-  _createClass(ContactForm, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          handleAddContact = _this$props.handleAddContact,
-          handleChange = _this$props.handleChange,
-          displayName = _this$props.displayName,
-          title = _this$props.title,
-          company = _this$props.company,
-          location = _this$props.location,
-          petName = _this$props.petName,
-          petType = _this$props.petType,
-          relationshipName = _this$props.relationshipName,
-          relationshipType = _this$props.relationshipType;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "col s8 offset-s2",
-        onSubmit: handleAddContact
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-field col s6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        placeholder: "Name",
-        type: "text",
-        name: "displayName",
-        value: displayName,
-        onChange: handleChange
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-field col s6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        placeholder: "Title",
-        type: "text",
-        name: "title",
-        value: title,
-        onChange: handleChange
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-field col s6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        placeholder: "Company",
-        type: "text",
-        name: "company",
-        value: company,
-        onChange: handleChange
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-field col s6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        placeholder: "Location",
-        type: "text",
-        name: "location",
-        value: location,
-        onChange: handleChange
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-field col s6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        placeholder: "Relationship Name",
-        type: "text",
-        name: "relationshipName",
-        value: relationshipName,
-        onChange: handleChange
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-field col s6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        placeholder: "Relationship Type",
-        type: "text",
-        name: "relationshipType",
-        value: relationshipType,
-        onChange: handleChange
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-field col s6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        placeholder: "Pet Name",
-        type: "text",
-        name: "petName",
-        value: petName,
-        onChange: handleChange
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-field col s6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        placeholder: "Pet Type",
-        type: "text",
-        name: "petType",
-        value: petType,
-        onChange: handleChange
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "submit"
-      }, "Add Contact")))));
-    }
-  }]);
-
-  return ContactForm;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+var ContactForm = function ContactForm(props) {
+  var handleAddContact = props.handleAddContact,
+      handleChange = props.handleChange,
+      displayName = props.displayName,
+      title = props.title,
+      company = props.company,
+      location = props.location,
+      petName = props.petName,
+      petType = props.petType,
+      relationshipName = props.relationshipName,
+      relationshipType = props.relationshipType;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: handleAddContact
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-field col s6"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    placeholder: "Name",
+    type: "text",
+    name: "displayName",
+    value: displayName,
+    onChange: handleChange
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-field col s6"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    placeholder: "Title",
+    type: "text",
+    name: "title",
+    value: title,
+    onChange: handleChange
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-field col s6"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    placeholder: "Company",
+    type: "text",
+    name: "company",
+    value: company,
+    onChange: handleChange
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-field col s6"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    placeholder: "Location",
+    type: "text",
+    name: "location",
+    value: location,
+    onChange: handleChange
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-field col s6"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    placeholder: "Relationship Name",
+    type: "text",
+    name: "relationshipName",
+    value: relationshipName,
+    onChange: handleChange
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-field col s6"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    placeholder: "Relationship Type",
+    type: "text",
+    name: "relationshipType",
+    value: relationshipType,
+    onChange: handleChange
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-field col s6"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    placeholder: "Pet Name",
+    type: "text",
+    name: "petName",
+    value: petName,
+    onChange: handleChange
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-field col s6"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    placeholder: "Pet Type",
+    type: "text",
+    name: "petType",
+    value: petType,
+    onChange: handleChange
+  })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn",
+    type: "submit",
+    disabled: !displayName
+  }, "Add Contact")));
+};
 
 /* harmony default export */ __webpack_exports__["default"] = (ContactForm);
 
@@ -575,31 +736,16 @@ function (_Component) {
     value: function render() {
       var _this$props$contact = this.props.contact,
           displayName = _this$props$contact.displayName,
-          title = _this$props$contact.title,
-          company = _this$props$contact.company,
-          location = _this$props$contact.location,
-          pets = _this$props$contact.pets,
-          relationships = _this$props$contact.relationships;
+          id = _this$props$contact.id;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
+        className: "collection"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col s12 m6 offset-m3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-content"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-title"
-      }, displayName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Title: ", title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Company: ", company), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Location: ", location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Pets:"), pets ? pets.map(function (pet) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          key: pet.id
-        }, pet.displayName);
-      }) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Relationships:"), relationships ? relationships.map(function (relationship) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          to: "/contacts/".concat(relationship.relationshipId),
-          key: relationship.relationshipId
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, relationship.type));
-      }) : null))));
+        className: "collection-item avatar valign-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "material-icons circle blue"
+      }, " account_circle"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/contacts/".concat(id)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, displayName))));
     }
   }]);
 
@@ -732,7 +878,7 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-        className: "nav-wrapper"
+        className: "nav-wrapper blue"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -824,18 +970,14 @@ function (_Component) {
           type = _this$props$pet.type,
           contact = _this$props$pet.contact;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
+        className: "collection"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col s12 m6 offset-m3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-content"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-title"
-      }, displayName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "collection-item avatar valign-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "material-icons circle blue"
+      }, "pets"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/contacts/".concat(contact.id)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Owner: ", contact.displayName))))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, displayName, " | ", contact.displayName, "'s ", type))));
     }
   }]);
 
@@ -859,6 +1001,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _store_contact__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/contact */ "./client/store/contact.js");
+/* harmony import */ var _AddRelationship__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AddRelationship */ "./client/components/AddRelationship.js");
+/* harmony import */ var _AddPet__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AddPet */ "./client/components/AddPet.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -881,6 +1025,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var ProfileView =
 /*#__PURE__*/
 function (_Component) {
@@ -892,7 +1038,12 @@ function (_Component) {
     _classCallCheck(this, ProfileView);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ProfileView).call(this));
+    _this.state = {
+      relationshipForm: null,
+      petForm: null
+    };
     _this.handleRedirect = _this.handleRedirect.bind(_assertThisInitialized(_this));
+    _this.toggleForm = _this.toggleForm.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -908,6 +1059,21 @@ function (_Component) {
       this.props.getContact(id);
     }
   }, {
+    key: "toggleForm",
+    value: function toggleForm(form) {
+      if (form === 'relationships') {
+        this.setState({
+          relationshipForm: true,
+          petForm: null
+        });
+      } else {
+        this.setState({
+          relationshipForm: null,
+          petForm: true
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -915,19 +1081,20 @@ function (_Component) {
       var _this$props = this.props,
           loading = _this$props.loading,
           contact = _this$props.contact;
-      console.log(contact);
+      var _this$state = this.state,
+          relationshipForm = _this$state.relationshipForm,
+          petForm = _this$state.petForm;
       if (loading) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading");
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col s12 m6 offset-m3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-content"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-title"
-      }, contact.displayName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Title: ", contact.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Company: ", contact.company), contact.relationships ? contact.relationships.map(function (relationship) {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, contact.displayName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, contact.title, " | ", contact.company), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, contact.location)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "col"
+      }, "Relationships", ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        onClick: function onClick() {
+          return _this2.toggleForm('relationships');
+        },
+        className: "col material-icons blue-text"
+      }, "add_circle_outline")), contact.relationships ? contact.relationships.map(function (relationship) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "blue-text",
           key: relationship.relationshipId,
@@ -935,7 +1102,20 @@ function (_Component) {
             return _this2.handleRedirect(relationship.relationshipId);
           }
         }, relationship.type);
-      }) : null))));
+      }) : 'No Relationships', relationshipForm ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddRelationship__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        id: contact.id
+      }) : null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Pets", ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        onClick: function onClick() {
+          return _this2.toggleForm('pets');
+        },
+        className: "col material-icons blue-text"
+      }, "add_circle_outline")), contact.pets ? contact.pets.map(function (pet) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: pet.id
+        }, pet.displayName, " | ", pet.type);
+      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "No Pets"), petForm ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddPet__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        id: contact.id
+      }) : null));
     }
   }]);
 
@@ -1028,16 +1208,6 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          results = _this$props.results,
-          loading = _this$props.loading;
-
-      if (loading) {
-        console.log('loading...');
-      } else {
-        console.log('RESULTS', results);
-      }
-
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "input-field"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -1050,25 +1220,23 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "teal accent-3 btn-small",
         type: "submit",
-        onClick: this.handleSearch
+        onClick: this.handleSearch,
+        disabled: !this.state.keyword
       }, "Search"))));
     }
   }]);
 
   return SearchBar;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]); // const mapState = state => ({
+//   results: state.search.results,
+//   loading: state.search.loading,
+// });
 
-var mapState = function mapState(state) {
-  return {
-    results: state.search.results,
-    loading: state.search.loading
-  };
-};
 
 var mapDispatch = {
   searchDatabase: _store_search__WEBPACK_IMPORTED_MODULE_2__["searchDatabase"]
 };
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapState, mapDispatch)(SearchBar));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, mapDispatch)(SearchBar));
 
 /***/ }),
 
@@ -1270,14 +1438,23 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 /*!*********************************!*\
   !*** ./client/store/contact.js ***!
   \*********************************/
-/*! exports provided: getContact, default */
+/*! exports provided: getContact, addPet, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getContact", function() { return getContact; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addPet", function() { return addPet; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -1291,7 +1468,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
  // action types
 
 var LOADING_CONTACT = 'LOADING_CONTACT';
-var GET_CONTACT = 'GET_CONTACT'; // action creators
+var GET_CONTACT = 'GET_CONTACT';
+var ADD_PET = 'ADD_PET'; // action creators
 
 var loadingContact = function loadingContact() {
   return {
@@ -1302,6 +1480,13 @@ var loadingContact = function loadingContact() {
 var contact = function contact(payload) {
   return {
     type: GET_CONTACT,
+    payload: payload
+  };
+};
+
+var addedPet = function addedPet(payload) {
+  return {
+    type: ADD_PET,
     payload: payload
   };
 }; // thunk
@@ -1343,6 +1528,49 @@ var getContact = function getContact(id) {
     }()
   );
 };
+var addPet = function addPet(id, pet) {
+  return (
+    /*#__PURE__*/
+    function () {
+      var _ref3 = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee2(dispatch) {
+        var _ref4, data;
+
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/contacts/".concat(id, "/pets"), pet);
+
+              case 3:
+                _ref4 = _context2.sent;
+                data = _ref4.data;
+                dispatch(addedPet(data));
+                _context2.next = 11;
+                break;
+
+              case 8:
+                _context2.prev = 8;
+                _context2.t0 = _context2["catch"](0);
+                console.error(_context2.t0);
+
+              case 11:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 8]]);
+      }));
+
+      return function (_x2) {
+        return _ref3.apply(this, arguments);
+      };
+    }()
+  );
+};
 var initialState = {
   selected: {},
   loading: false
@@ -1363,6 +1591,15 @@ var initialState = {
         selected: action.payload,
         loading: false
       });
+
+    case ADD_PET:
+      {
+        return _objectSpread({}, state, {
+          selected: _objectSpread({}, state.selected, {
+            pets: [].concat(_toConsumableArray(state.selected.pets), [action.payload])
+          })
+        });
+      }
 
     default:
       return state;

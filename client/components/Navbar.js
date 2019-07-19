@@ -5,7 +5,7 @@ class Navbar extends Component {
   render() {
     return (
       <div>
-        <nav className="nav-wrapper">
+        <nav className="nav-wrapper blue">
           <div className="container">
             <Link to="/" className="brand-logo">
               Grapevine

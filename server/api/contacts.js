@@ -63,6 +63,7 @@ router.post('/', async (req, res, next) => {
         await contact.update({ location });
       }
     }
+
     // add pet
     if (petName) {
       await Pet.create({
@@ -76,7 +77,7 @@ router.post('/', async (req, res, next) => {
     // check if relationship is a contact
     if (relationshipName) {
       const foundContact = await Contact.findOne({
-        where: { displayName: relationshipName },
+        where: { displayName: relationshipName.toLowerCase() },
       });
       // if contact exists, create the relationship
       if (foundContact) {

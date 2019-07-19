@@ -5,17 +5,15 @@ class PetView extends Component {
   render() {
     const { displayName, type, contact } = this.props.pet;
     return (
-      <div className="row">
-        <div className="col s12 m6 offset-m3">
-          <div className="card">
-            <div className="card-content">
-              <div className="card-title">{displayName}</div>
-              <div>{type}</div>
-              <Link to={`/contacts/${contact.id}`}>
-                <div>Owner: {contact.displayName}</div>
-              </Link>
-            </div>
-          </div>
+      <div className="collection">
+        <div className="collection-item avatar valign-wrapper">
+          <i className="material-icons circle blue">pets</i>
+
+          <Link to={`/contacts/${contact.id}`}>
+            <h5>
+              {displayName} | {contact.displayName}'s {type}
+            </h5>
+          </Link>
         </div>
       </div>
     );
