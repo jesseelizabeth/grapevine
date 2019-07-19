@@ -24,10 +24,10 @@ const ContactForm = props => {
             <input placeholder="Location" type="text" name="location" />
           </div>
         </div>
-        <AddRelationship />
-        <AddPet />
         {error && error.response && <div> {error.response.data} </div>}
       </form>
+      <AddRelationship />
+      <AddPet />
     </div>
   );
 };

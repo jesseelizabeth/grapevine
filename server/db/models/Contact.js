@@ -4,6 +4,7 @@ const db = require('../db');
 const Contact = db.define('contact', {
   displayName: {
     type: Sequelize.STRING,
+    allowNull: false,
   },
   title: {
     type: Sequelize.STRING,
