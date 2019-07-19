@@ -27,9 +27,18 @@ class SearchResults extends Component {
           ? results.pets.map(pet => <PetView key={pet.id} pet={pet} />)
           : null}
         {results.relContacts
-          ? results.relContacts.map(contact => (
-              <ContactView key={contact.id} contact={contact} />
-            ))
+          ? results.relContacts.map(contact => {
+              const [relation] = results.relationships.filter(
+                relationship => relationship.relationshipId === contact.id
+              );
+              return (
+                <ContactView
+                  key={contact.id}
+                  contact={contact}
+                  relation={relation}
+                />
+              );
+            })
           : null}
       </div>
     );

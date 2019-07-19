@@ -772,9 +772,9 @@ function (_Component) {
   _createClass(ContactView, [{
     key: "render",
     value: function render() {
-      var _this$props$contact = this.props.contact,
-          displayName = _this$props$contact.displayName,
-          id = _this$props$contact.id;
+      var _this$props = this.props,
+          relation = _this$props.relation,
+          contact = _this$props.contact;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "collection"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -782,8 +782,8 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "material-icons circle blue"
       }, " account_circle"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/contacts/".concat(id)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, displayName))));
+        to: "/contacts/".concat(contact.id)
+      }, relation ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, contact.displayName, " | ", relation.contact.displayName, "'s", ' ', relation.type, ' ') : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, contact.displayName))));
     }
   }]);
 
@@ -1295,6 +1295,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _NoResults__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NoResults */ "./client/components/NoResults.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -1353,9 +1361,16 @@ function (_Component) {
           pet: pet
         });
       }) : null, results.relContacts ? results.relContacts.map(function (contact) {
+        var _results$relationship = results.relationships.filter(function (relationship) {
+          return relationship.relationshipId === contact.id;
+        }),
+            _results$relationship2 = _slicedToArray(_results$relationship, 1),
+            relation = _results$relationship2[0];
+
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ContactView__WEBPACK_IMPORTED_MODULE_2__["default"], {
           key: contact.id,
-          contact: contact
+          contact: contact,
+          relation: relation
         });
       }) : null);
     }

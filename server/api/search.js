@@ -24,12 +24,13 @@ router.get('/:keyword', async (req, res, next) => {
       where: {
         [Op.or]: [{ type: { [Op.substring]: keyword } }],
       },
+      include: { model: Contact },
     });
     let relContacts = [];
     await relationships.map(async relationship => {
       const contact = await Contact.findOne({
         where: { id: relationship.relationshipId },
-        include: { model: Pet },
+        include: [{ model: Pet }, { model: Relationship }],
       });
       relContacts.push(contact);
     });
