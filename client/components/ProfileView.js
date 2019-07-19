@@ -8,11 +8,12 @@ class ProfileView extends Component {
   constructor() {
     super();
     this.state = {
-      relationshipForm: null,
-      petForm: null,
+      relationshipForm: false,
+      petForm: false,
     };
     this.handleRedirect = this.handleRedirect.bind(this);
-    this.toggleForm = this.toggleForm.bind(this);
+    this.toggleRelationshipForm = this.toggleRelationshipForm.bind(this);
+    this.togglePetForm = this.togglePetForm.bind(this);
   }
   componentDidMount() {
     const { id } = this.props.match.params;
@@ -21,12 +22,15 @@ class ProfileView extends Component {
   handleRedirect(id) {
     this.props.getContact(id);
   }
-  toggleForm(form) {
-    if (form === 'relationships') {
-      this.setState({ relationshipForm: true, petForm: null });
-    } else {
-      this.setState({ relationshipForm: null, petForm: true });
-    }
+  toggleRelationshipForm() {
+    this.setState(prevState => ({
+      relationshipForm: !prevState.relationshipForm,
+    }));
+  }
+  togglePetForm() {
+    this.setState(prevState => ({
+      petForm: !prevState.petForm,
+    }));
   }
   render() {
     const { loading, contact } = this.props;
@@ -45,7 +49,7 @@ class ProfileView extends Component {
           <h5 className="col">
             Relationships{' '}
             <i
-              onClick={() => this.toggleForm('relationships')}
+              onClick={this.toggleRelationshipForm}
               className="col material-icons blue-text"
             >
               add_circle_outline
@@ -70,7 +74,7 @@ class ProfileView extends Component {
           <h5>
             Pets{' '}
             <i
-              onClick={() => this.toggleForm('pets')}
+              onClick={this.togglePetForm}
               className="col material-icons blue-text"
             >
               add_circle_outline

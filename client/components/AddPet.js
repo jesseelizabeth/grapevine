@@ -44,7 +44,11 @@ class AddPet extends Component {
               />
             </div>
           </div>
-          <button className="btn" type="submit">
+          <button
+            className="btn"
+            type="submit"
+            disabled={!this.state.displayName}
+          >
             Add Pet
           </button>
         </form>

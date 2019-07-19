@@ -392,7 +392,8 @@ function (_Component) {
         onChange: this.handleChange
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn",
-        type: "submit"
+        type: "submit",
+        disabled: !this.state.displayName
       }, "Add Pet")));
     }
   }]);
@@ -418,7 +419,11 @@ var mapDispatch = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store_contact__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/contact */ "./client/store/contact.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -428,13 +433,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
 
 
 
@@ -444,18 +451,42 @@ function (_Component) {
   _inherits(AddRelationship, _Component);
 
   function AddRelationship() {
+    var _this;
+
     _classCallCheck(this, AddRelationship);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(AddRelationship).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(AddRelationship).call(this));
+    _this.state = {
+      displayName: '',
+      type: ''
+    };
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleAddRelationship = _this.handleAddRelationship.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(AddRelationship, [{
+    key: "handleChange",
+    value: function handleChange(event) {
+      this.setState(_defineProperty({}, event.target.name, event.target.value));
+    }
+  }, {
+    key: "handleAddRelationship",
+    value: function handleAddRelationship(event) {
+      event.preventDefault();
+      this.props.addRelationship(this.props.id, this.state);
+      this.setState({
+        displayName: '',
+        type: ''
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "col s8 offset-s2"
+        onSubmit: this.handleAddRelationship
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -463,15 +494,19 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         placeholder: "Relationship Name",
         type: "text",
-        name: "relationship displayName"
+        name: "displayName",
+        onChange: this.handleChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "input-field col s6"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         placeholder: "Relationship Type",
         type: "text",
-        name: "relationship type"
+        name: "type",
+        onChange: this.handleChange
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "submit"
+        className: "btn",
+        type: "submit",
+        disabled: !this.state.displayName
       }, "Add Relationship")));
     }
   }]);
@@ -479,7 +514,10 @@ function (_Component) {
   return AddRelationship;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (AddRelationship);
+var mapDispatch = {
+  addRelationship: _store_contact__WEBPACK_IMPORTED_MODULE_2__["addRelationship"]
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, mapDispatch)(AddRelationship));
 
 /***/ }),
 
@@ -1039,11 +1077,12 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ProfileView).call(this));
     _this.state = {
-      relationshipForm: null,
-      petForm: null
+      relationshipForm: false,
+      petForm: false
     };
     _this.handleRedirect = _this.handleRedirect.bind(_assertThisInitialized(_this));
-    _this.toggleForm = _this.toggleForm.bind(_assertThisInitialized(_this));
+    _this.toggleRelationshipForm = _this.toggleRelationshipForm.bind(_assertThisInitialized(_this));
+    _this.togglePetForm = _this.togglePetForm.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1059,19 +1098,22 @@ function (_Component) {
       this.props.getContact(id);
     }
   }, {
-    key: "toggleForm",
-    value: function toggleForm(form) {
-      if (form === 'relationships') {
-        this.setState({
-          relationshipForm: true,
-          petForm: null
-        });
-      } else {
-        this.setState({
-          relationshipForm: null,
-          petForm: true
-        });
-      }
+    key: "toggleRelationshipForm",
+    value: function toggleRelationshipForm() {
+      this.setState(function (prevState) {
+        return {
+          relationshipForm: !prevState.relationshipForm
+        };
+      });
+    }
+  }, {
+    key: "togglePetForm",
+    value: function togglePetForm() {
+      this.setState(function (prevState) {
+        return {
+          petForm: !prevState.petForm
+        };
+      });
     }
   }, {
     key: "render",
@@ -1090,9 +1132,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, contact.displayName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, contact.title, " | ", contact.company), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, contact.location)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
         className: "col"
       }, "Relationships", ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        onClick: function onClick() {
-          return _this2.toggleForm('relationships');
-        },
+        onClick: this.toggleRelationshipForm,
         className: "col material-icons blue-text"
       }, "add_circle_outline")), contact.relationships ? contact.relationships.map(function (relationship) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1105,9 +1145,7 @@ function (_Component) {
       }) : 'No Relationships', relationshipForm ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddRelationship__WEBPACK_IMPORTED_MODULE_3__["default"], {
         id: contact.id
       }) : null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Pets", ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        onClick: function onClick() {
-          return _this2.toggleForm('pets');
-        },
+        onClick: this.togglePetForm,
         className: "col material-icons blue-text"
       }, "add_circle_outline")), contact.pets ? contact.pets.map(function (pet) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1438,13 +1476,14 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 /*!*********************************!*\
   !*** ./client/store/contact.js ***!
   \*********************************/
-/*! exports provided: getContact, addPet, default */
+/*! exports provided: getContact, addPet, addRelationship, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getContact", function() { return getContact; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addPet", function() { return addPet; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addRelationship", function() { return addRelationship; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -1469,7 +1508,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var LOADING_CONTACT = 'LOADING_CONTACT';
 var GET_CONTACT = 'GET_CONTACT';
-var ADD_PET = 'ADD_PET'; // action creators
+var ADD_PET = 'ADD_PET';
+var ADD_RELATIONSHIP = 'ADD_RELATIONSHIP'; // action creators
 
 var loadingContact = function loadingContact() {
   return {
@@ -1477,7 +1517,7 @@ var loadingContact = function loadingContact() {
   };
 };
 
-var contact = function contact(payload) {
+var gotContact = function gotContact(payload) {
   return {
     type: GET_CONTACT,
     payload: payload
@@ -1487,6 +1527,13 @@ var contact = function contact(payload) {
 var addedPet = function addedPet(payload) {
   return {
     type: ADD_PET,
+    payload: payload
+  };
+};
+
+var addedRelationship = function addedRelationship(payload) {
+  return {
+    type: ADD_RELATIONSHIP,
     payload: payload
   };
 }; // thunk
@@ -1512,7 +1559,7 @@ var getContact = function getContact(id) {
               case 3:
                 _ref2 = _context.sent;
                 data = _ref2.data;
-                dispatch(contact(data));
+                dispatch(gotContact(data));
 
               case 6:
               case "end":
@@ -1571,6 +1618,49 @@ var addPet = function addPet(id, pet) {
     }()
   );
 };
+var addRelationship = function addRelationship(id, contact) {
+  return (
+    /*#__PURE__*/
+    function () {
+      var _ref5 = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee3(dispatch) {
+        var _ref6, data;
+
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/contacts/".concat(id, "/relationships"), contact);
+
+              case 3:
+                _ref6 = _context3.sent;
+                data = _ref6.data;
+                dispatch(addedRelationship(data));
+                _context3.next = 11;
+                break;
+
+              case 8:
+                _context3.prev = 8;
+                _context3.t0 = _context3["catch"](0);
+                console.error(_context3.t0);
+
+              case 11:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[0, 8]]);
+      }));
+
+      return function (_x3) {
+        return _ref5.apply(this, arguments);
+      };
+    }()
+  );
+};
 var initialState = {
   selected: {},
   loading: false
@@ -1597,6 +1687,15 @@ var initialState = {
         return _objectSpread({}, state, {
           selected: _objectSpread({}, state.selected, {
             pets: [].concat(_toConsumableArray(state.selected.pets), [action.payload])
+          })
+        });
+      }
+
+    case ADD_RELATIONSHIP:
+      {
+        return _objectSpread({}, state, {
+          selected: _objectSpread({}, state.selected, {
+            relationships: [].concat(_toConsumableArray(state.selected.relationships), [action.payload])
           })
         });
       }

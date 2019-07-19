@@ -4,13 +4,14 @@ import axios from 'axios';
 const LOADING_CONTACT = 'LOADING_CONTACT';
 const GET_CONTACT = 'GET_CONTACT';
 const ADD_PET = 'ADD_PET';
+const ADD_RELATIONSHIP = 'ADD_RELATIONSHIP';
 
 // action creators
 const loadingContact = () => ({
   type: LOADING_CONTACT,
 });
 
-const contact = payload => ({
+const gotContact = payload => ({
   type: GET_CONTACT,
   payload,
 });
@@ -20,17 +21,34 @@ const addedPet = payload => ({
   payload,
 });
 
+const addedRelationship = payload => ({
+  type: ADD_RELATIONSHIP,
+  payload,
+});
+
 // thunk
 export const getContact = id => async dispatch => {
   dispatch(loadingContact());
   const { data } = await axios.get(`/api/contacts/${id}`);
-  dispatch(contact(data));
+  dispatch(gotContact(data));
 };
 
 export const addPet = (id, pet) => async dispatch => {
   try {
     const { data } = await axios.post(`/api/contacts/${id}/pets`, pet);
     dispatch(addedPet(data));
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const addRelationship = (id, contact) => async dispatch => {
+  try {
+    const { data } = await axios.post(
+      `/api/contacts/${id}/relationships`,
+      contact
+    );
+    dispatch(addedRelationship(data));
   } catch (error) {
     console.error(error);
   }
@@ -54,6 +72,15 @@ export default function(state = initialState, action) {
         selected: {
           ...state.selected,
           pets: [...state.selected.pets, action.payload],
+        },
+      };
+    }
+    case ADD_RELATIONSHIP: {
+      return {
+        ...state,
+        selected: {
+          ...state.selected,
+          relationships: [...state.selected.relationships, action.payload],
         },
       };
     }
