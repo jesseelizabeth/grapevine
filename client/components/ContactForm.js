@@ -1,4 +1,6 @@
 import React from 'react';
+import AddRelationship from './AddRelationship';
+import AddPet from './AddPet';
 
 const ContactForm = props => {
   const { handleSubmit, error } = props;
@@ -18,26 +20,12 @@ const ContactForm = props => {
           <div className="input-field col s6">
             <input placeholder="Company" type="text" name="company" />
           </div>
-        </div>
-        <div className="row">
           <div className="input-field col s6">
             <input placeholder="Location" type="text" name="location" />
           </div>
         </div>
-        <div className="row">
-          <div className="input-field col s6">
-            <input placeholder="Pets" type="text" name="pets" />
-          </div>
-        </div>
-        <div className="row">
-          <div className="input-field col s6">
-            <input
-              placeholder="Relationships"
-              type="text"
-              name="relationships"
-            />
-          </div>
-        </div>
+        <AddRelationship />
+        <AddPet />
         {error && error.response && <div> {error.response.data} </div>}
       </form>
     </div>

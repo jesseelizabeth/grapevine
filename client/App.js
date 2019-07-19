@@ -1,12 +1,13 @@
 import React from 'react';
-
-import { Navbar, ContactForm, ProfileView } from './components';
+import Routes from './Routes';
+import { Navbar, ContactForm } from './components';
 
 const App = () => {
   return (
     <div>
       <Navbar />
-      <ProfileView />
+      <Routes />
+      <ContactForm />
     </div>
   );
 };

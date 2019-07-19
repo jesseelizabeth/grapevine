@@ -8,7 +8,7 @@ Pet.belongsTo(Contact);
 
 Contact.belongsToMany(Contact, {
   as: 'relationships',
-  through: 'relationship',
+  through: Relationship,
 });
 Contact.hasMany(Relationship);
 Relationship.belongsTo(Contact);

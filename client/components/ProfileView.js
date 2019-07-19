@@ -1,52 +1,41 @@
 import React, { Component } from 'react';
-import { gql } from 'apollo-boost';
-import { Query } from 'react-apollo';
-
-const GET_CONTACT = gql`
-  {
-    contact(id: 8) {
-      displayName
-      title
-      company
-      location
-      pets {
-        displayName
-        type
-      }
-      relationships {
-        type
-        contact {
-          displayName
-        }
-      }
-    }
-  }
-`;
+import { connect } from 'react-redux';
+import { getContact } from '../store/contact';
 
 class ProfileView extends Component {
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    this.props.getContact(id);
+  }
   render() {
+    const { loading, contact } = this.props;
+    console.log(contact);
+    if (loading) return <div>Loading</div>;
     return (
-      <Query query={GET_CONTACT}>
-        {({ loading, error, data }) => {
-          if (loading) return <div>Loading</div>;
-          if (error) return <div>Error</div>;
-          console.log(data);
-          return (
-            <div>
-              <div>{data.contact.displayName}</div>
-              <div>{data.contact.title}</div>
-              <div>{data.contact.company}</div>
-              {data.contact.relationships.map(relationship => (
-                <div key={relationship.id}>
-                  {relationship.type} - {relationship.contact.displayName}
-                </div>
-              ))}
-            </div>
-          );
-        }}
-      </Query>
+      <div>
+        <div>{contact.displayName}</div>
+        <div>{contact.title}</div>
+        <div>{contact.company}</div>
+        {contact.relationships
+          ? contact.relationships.map(relationship => (
+              <div key={relationship.id}>{relationship.type}</div>
+            ))
+          : null}
+      </div>
     );
   }
 }
 
-export default ProfileView;
+const mapState = state => ({
+  contact: state.contact.selected,
+  loading: state.contact.loading,
+});
+
+const mapDispatch = {
+  getContact,
+};
+
+export default connect(
+  mapState,
+  mapDispatch
+)(ProfileView);
