@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { searchDatabase } from '../store/search';
+import { Link } from 'react-router-dom';
 
 class SearchBar extends Component {
   constructor() {
@@ -35,13 +36,15 @@ class SearchBar extends Component {
             onChange={this.handleChange}
             placeholder="Ticker"
           />
-          <button
-            className="teal accent-3 btn-small"
-            type="submit"
-            onClick={this.handleSearch}
-          >
-            Search
-          </button>
+          <Link to="/results">
+            <button
+              className="teal accent-3 btn-small"
+              type="submit"
+              onClick={this.handleSearch}
+            >
+              Search
+            </button>
+          </Link>
         </div>
       </div>
     );

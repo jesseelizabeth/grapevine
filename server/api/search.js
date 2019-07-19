@@ -37,6 +37,7 @@ router.get('/:keyword', async (req, res, next) => {
           { type: { [Op.substring]: keyword } },
         ],
       },
+      include: { model: Contact },
     });
     res.json({ contacts, relationships, pets, relContacts });
   } catch (error) {
