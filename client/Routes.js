@@ -6,9 +6,9 @@ class Routes extends Component {
   render() {
     return (
       <Switch>
-        <Route path="/" component={Home} />
-        <Route path="/contacts" component={AllContacts} />
+        <Route exact path="/" component={Home} />
         <Route path="/contacts/:id" component={ProfileView} />
+        <Route path="/contacts" component={AllContacts} />
         <Route path="/results" component={SearchResults} />
       </Switch>
     );

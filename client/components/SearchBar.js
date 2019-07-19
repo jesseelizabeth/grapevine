@@ -34,7 +34,7 @@ class SearchBar extends Component {
             type="text"
             value={this.state.symbol}
             onChange={this.handleChange}
-            placeholder="Ticker"
+            placeholder="Search"
           />
           <Link to="/results">
             <button
