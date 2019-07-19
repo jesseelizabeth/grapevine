@@ -11,16 +11,6 @@ class Navbar extends Component {
               Grapevine
             </Link>
           </div>
-          <div>
-            <ul className="right hide-on-med-and-down">
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/contacts">Contacts</Link>
-              </li>
-            </ul>
-          </div>
         </nav>
       </div>
     );

@@ -626,7 +626,17 @@ function (_Component) {
           title = _this$props$contact.title,
           company = _this$props$contact.company,
           location = _this$props$contact.location;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, displayName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, company), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, location));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col s12 m6 offset-m3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-title"
+      }, displayName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Title: ", title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Company: ", company), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Location: ", location)))));
     }
   }]);
 
@@ -765,13 +775,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/",
         className: "brand-logo"
-      }, "Grapevine")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "right hide-on-med-and-down"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/"
-      }, "Home")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/contacts"
-      }, "Contacts"))))));
+      }, "Grapevine"))));
     }
   }]);
 
@@ -779,6 +783,29 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Navbar);
+
+/***/ }),
+
+/***/ "./client/components/NoResults.js":
+/*!****************************************!*\
+  !*** ./client/components/NoResults.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var NoResults = function NoResults() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container center-align"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "No Results"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (NoResults);
 
 /***/ }),
 
@@ -793,6 +820,7 @@ function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -810,6 +838,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -831,7 +860,19 @@ function (_Component) {
           displayName = _this$props$pet.displayName,
           type = _this$props$pet.type,
           contact = _this$props$pet.contact;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, displayName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, contact.displayName));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col s12 m6 offset-m3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-title"
+      }, displayName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/contacts/".concat(contact.id)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Owner: ", contact.displayName))))));
     }
   }]);
 
@@ -865,9 +906,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -883,9 +924,13 @@ function (_Component) {
   _inherits(ProfileView, _Component);
 
   function ProfileView() {
+    var _this;
+
     _classCallCheck(this, ProfileView);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ProfileView).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProfileView).call(this));
+    _this.handleRedirect = _this.handleRedirect.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(ProfileView, [{
@@ -895,18 +940,39 @@ function (_Component) {
       this.props.getContact(id);
     }
   }, {
+    key: "handleRedirect",
+    value: function handleRedirect(id) {
+      this.props.getContact(id);
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var _this$props = this.props,
           loading = _this$props.loading,
           contact = _this$props.contact;
       console.log(contact);
       if (loading) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading");
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, contact.displayName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, contact.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, contact.company), contact.relationships ? contact.relationships.map(function (relationship) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col s12 m6 offset-m3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-title"
+      }, contact.displayName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Title: ", contact.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Company: ", contact.company), contact.relationships ? contact.relationships.map(function (relationship) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          key: relationship.id
+          className: "blue-text",
+          key: relationship.relationshipId,
+          onClick: function onClick() {
+            return _this2.handleRedirect(relationship.relationshipId);
+          }
         }, relationship.type);
-      }) : null);
+      }) : null))));
     }
   }]);
 
@@ -1057,6 +1123,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _ContactView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ContactView */ "./client/components/ContactView.js");
 /* harmony import */ var _PetView__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PetView */ "./client/components/PetView.js");
+/* harmony import */ var _NoResults__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NoResults */ "./client/components/NoResults.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1080,6 +1147,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var SearchResults =
 /*#__PURE__*/
 function (_Component) {
@@ -1094,9 +1162,18 @@ function (_Component) {
   _createClass(SearchResults, [{
     key: "render",
     value: function render() {
-      var results = this.props.results;
+      var _this$props = this.props,
+          results = _this$props.results,
+          loading = _this$props.loading;
       console.log(results);
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, results.contacts ? results.contacts.map(function (contact) {
+
+      if (!loading && !results.contacts.length && !results.relContacts.length && !results.pets.length) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NoResults__WEBPACK_IMPORTED_MODULE_4__["default"], null);
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, results.contacts ? results.contacts.map(function (contact) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ContactView__WEBPACK_IMPORTED_MODULE_2__["default"], {
           key: contact.id,
           contact: contact
@@ -1105,6 +1182,11 @@ function (_Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PetView__WEBPACK_IMPORTED_MODULE_3__["default"], {
           key: pet.id,
           pet: pet
+        });
+      }) : null, results.relContacts ? results.relContacts.map(function (contact) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ContactView__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          key: contact.id,
+          contact: contact
         });
       }) : null);
     }
@@ -1115,7 +1197,8 @@ function (_Component) {
 
 var mapState = function mapState(state) {
   return {
-    results: state.search.results
+    results: state.search.results,
+    loading: state.search.loading
   };
 };
 
